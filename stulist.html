@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Student Entries </title>
+
+    <style type="text/css">
+
+        body
+        {background-image: url('http://stefansundin.com/stuff/myapps-wallpaper/source/background.jpg');
+        }
+        td.a
+        {padding: 1em;
+         font-weight: bold;
+         color: #A3A3CC;
+         text-align: center;
+        }
+
+        td.b
+        {padding:1em;
+         color: #101014;
+         text-align: center;
+        }
+
+        td.c,td.d
+        {padding:1em;
+         color: #A3A3CC;
+         text-align: center;
+        }
+
+        div.header,div.footer
+            {padding:0.5em;
+             color:#A3A3CC;
+             clear:left;
+             position: relative;
+            }
+        
+        div.zzz
+        {background-color: #CCCCFF;
+        border-color: white;
+        border-width: 2px;
+        }
+            
+    </style>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head> 
+<body>
+
+
+    <div class="zzz navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>   
+            <a class="navbar-brand"> Coe2043 Team 20 </a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li> <a href="/"> Home </a></li>
+                
+                <li class="dropdown"> 
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" > Student <b class="caret"></b> </a>
+                    <ul class="dropdown-menu">
+                        <li> <a href="/student/new"> Student Registration </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<hr size="5">
+	<div align="center" class="header"><h1 class="header">Students List</h1></div>
+<hr size="5">
+    <table align="center" border=1>
+
+<tr>
+        <td class="a"> First Name</td>
+        <td class="a"> Last Name</td>
+        <td class="a"> Email </td>
+</tr>  
+        {% for s in all_students %}
+ 
+
+<tr>
+        <td class="b">{{s.stu_first}}</td> 
+        <td class="b">{{s.stu_last}}</td> 
+        <td class="b">{{s.stu_mail}}</td>
+        <td class="c"><a href="/student/view/{{s.key.id()}}"> Look up </a> </td>
+        {% endfor %}
+</tr>
+    </table>
+<hr size="5">
+<div align="center" class="footer"><h1 class="header">Coe2043-Team 20</h1></div>
+<hr size="5">
+    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
