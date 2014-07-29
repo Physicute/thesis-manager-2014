@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Adviser Entries </title>
+
+    <style type="text/css">
+
+        table
+        {border: 3px solid #004BBA;
+        }
+        
+        body
+        {background-image: url('http://www.pageresource.com/wallpapers/wallpaper/themebenzo-image-texture_131123.jpg');
+        }
+
+        td.a,td.b,td.c,td.d
+        {padding: 1em;
+         font-weight: bold;
+         color: #6698E2;
+        }
+
+        td.e,td.f,td.g,td.h,td.i
+        {padding:1em;
+         color: white;
+         text-align: center;
+        }
+
+        h1
+        {font-weight: bold;
+         color: white;
+         font-style: italic;
+        }
+        div.header,div.footer
+            {padding:0.5em;
+             border: 2px;
+             border-radius: 20px;
+             border-color: white;
+             color:white;
+             background-color: #1F5C99;
+             clear:left;
+             position: relative;
+            }
+
+        a.f a.g
+        {color:white;
+
+        }
+
+        div.zzz
+        {background-color: #1F5C99;
+        border-color: white;
+        border-width: 2px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head> 
+<body>
+
+    <div class="zzz navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>   
+            <a class="navbar-brand"> Coe2043 Team 20 </a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li> <a href="/"> Home </a></li>
+                
+                <li class="dropdown"> 
+                    <a  class="dropdown-toggle" data-toggle="dropdown" > Adviser<b class="caret"></b> </a>
+                    <ul class="dropdown-menu">
+                        <li> <a href="/adviser/new"> Adviser Registration </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<hr size="5">
+	<div align="center" class="header"><h1 class="header">Adviser's List</h1></div>
+<hr size="5">
+    <table align="center" border="5">
+
+<tr>
+        <td class="a"> Adviser Title</td>
+        <td class="b"> First Name</td>
+        <td class="c"> Last Name </td>
+        <td class="d"> Department </td>
+</tr>  
+        {% for a in all_advise %}
+ 
+
+<tr>
+        <td class="e">{{a.ad_title}}</td> 
+        <td class="f">{{a.ad_first}}</td> 
+        <td class="g">{{a.ad_last}}</td>
+        <td class="h">{{a.ad_dept}}</td>
+        <td class="i"><a href="/adviser/view/{{a.key.id()}}"> Look up </a> </td>
+       
+        {% endfor %}
+</tr>
+    </table>
+    <br><br>
+<hr size="5">
+<div align="center" class="footer"><h1 class="header">Coe2043-Team 20</h1></div>
+<hr size="5">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
