@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+  
+  <head>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <style type="text/css">
+      
+      div.sss
+      {border: 2px;
+       border-width: 1px;
+       border-color:black;
+      }
+    
+      h1
+      {font-family: Arial;
+      }
+      body
+      {background-image: url('http://static.tumblr.com/89ec6ff498d2e1c5f2bc16df8d46f458/5mpeqmo/Y3wn271ei/tumblr_static_3477-silver-stripes-1920x1080-abstract-wallpaper.jpg'); 
+      }
+
+      li.sss
+      {margin-left: 650px;
+      }
+    </style>
+    
+  </head>
+  
+
+  <div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> 
+      <p.aaa class="navbar-brand"> Thesis Manager</p>
+    </div>
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown"> 
+          <a href="" class="dropdown-toggle" data-toggle="dropdown"> Student<b class="caret"></b> </a> 
+          <ul class="dropdown-menu">
+            <li> <a href="/student/new"> Student Registration </a></li>
+            <li> <a href="/student/list"> Student List </a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown"> 
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" > Adviser<b class="caret"></b> </a>
+          <ul class="dropdown-menu">
+            <li> <a href="/adviser/new"> Adviser Registration </a></li>
+            <li> <a href="/adviser/list"> Adviser List </a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown"> 
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" > Thesis<b class="caret"></b> </a>
+          <ul class="dropdown-menu">
+            <li> <a href="/thesis/new"> Thesis Registration </a></li>
+            <li> <a href="/thesis/list"> Thesis List </a></li>
+          </ul>
+        </li>  
+        <li class="sss">
+            <a href="{{ url|safe }}">{{ url_linktext }}</a>
+        </li>  
+      </ul>
+    </div>
+  </div>
+</div>
+  <div class="sss" align="center" >
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname() }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+  </div>
+    
+    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+      <div align="center" ><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div align="center"><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <hr>
+
+    <form >Guestbook name:
+      <input value="{{ guestbook_name }}" name="guestbook_name">
+      <input type="submit" value="switch">
+    </form>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
+{% endautoescape %}
