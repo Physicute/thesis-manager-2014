@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+
+	body
+	{background-image: url('http://www.pageresource.com/wallpapers/wallpaper/themebenzo-image-texture_131123.jpg');
+ 	}
+
+ 	div.header
+    {padding:0em;
+     border: 2px;
+     border-radius: 20px;
+     border-color: white;
+     color:#1F5C99;
+     clear:left;
+     position: relative;
+    }
+ 	
+ 	label.ppp
+ 	{color: #1F5C99;
+ 	}
+
+ 	p.sss
+ 	{color: #1F5C99;
+ 	 font-size: 40px;
+ 	 font-style: italic;
+ 	 text-align: center;
+ 	}
+ 	
+ 	p.rrr
+ 	{color: white;
+ 	}
+
+ 	p.aaa
+ 	{color: white;
+ 	}
+ 	div.zzz
+ 	{background-color: #1F5C99;
+ 	 border-bottom-width:2px;  
+ 	 border-color: white;
+ 	}
+ 	
+ 	div.solo
+ 	{margin-left: 650px;
+ 	}
+
+	</style>
+	<title> Adviser Update </title>
+	
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head>
+<body>
+<br><br>
+<div class="zzz navbar navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>	
+			<p class="aaa navbar-brand"> Coe2043 Team 20 </p>
+		</div>
+		<div class="navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li> <a href="/"> Home </a></li>
+				
+				<li class="dropdown"> 
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" > Adviser<b class="caret"></b> </a>
+					<ul class="dropdown-menu">
+						<li> <a href="/adviser/list"> Adviser List </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<br>
+	{% for a in all_advise %}
+	{% if  a.key.id()==id  %}
+	<form method="POST" action="/adviser/edit/{{a.key.id()}}" class="form-horizontal">
+		
+		<hr size="5">
+		<div align="center" class="header"><h1 class="header">Adviser's List</h1></div>
+		<hr size="5">
+		<div class="form-group">
+			<label for="dept" class="ppp col-sm-2 control-label"> Department: </label>
+			<div class="col-sm-6">
+				<select value="{{a.ad_dept}}" name="ad_dept">
+					<option value="None"> </option>
+					<option value="CE">CE</option>
+					<option value="CpE">CpE</option>
+					<option value="ECE">ECE</option>
+					<option value="EE">EE</option>
+					<option value="IE">IE</option>
+					<option value="ME">ME</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label for="title" class="ppp col-sm-2 control-label">Title: </label>
+			<div class="col-sm-6">
+				<select value="{{a.ad_title}}" align="center" name="ad_title"> 
+						<option value="None"> </option>
+						<option value="Mr."> Mr.</option>
+						<option value="Ms."> Ms.</option>
+						<option value="Mrs."> Mrs.</option>
+						<option value="Doctor"> Doctor</option>
+						<option value="Engineer"> Engineer</option>
+					</select>
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<label for="firstname" class="ppp col-sm-2 control-label">First Name: </label>
+			<div class="col-sm-6">
+				<input value="{{a.ad_first}}" name="ad_first" type="text" class="form-control">
+			</div>
+	    </div>
+	
+	    <div class="form-group">
+			<label for="lastname" class="ppp col-sm-2 control-label">Last Name: </label>
+			<div class="col-sm-6">
+				<input value="{{a.ad_last}}" name="ad_last" type="text" class="form-control">
+			</div>
+	    </div>
+
+	    <div class="form-group">
+			<label for="email" class="ppp col-sm-2 control-label">Email: </label>
+			<div class="col-sm-6">
+				<input value="{{a.ad_mail}}" name="ad_mail" type="email" class="form-control">
+			</div>
+	    </div>
+
+	    <div class="form-group">
+			<label for="number" class="ppp col-sm-2 control-label">Contact Number: </label>
+			<div class="col-sm-6">
+				<input value="{{a.ad_numb}}" name="ad_numb" type="text" class="form-control">
+			</div>
+		</div>	
+		<br><br>
+		<div class="solo">
+		<button class="btn btn-primary" type="submit"> Update</button>
+		</div>
+		{% endif %}
+      	{% endfor %}
+	</form>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
