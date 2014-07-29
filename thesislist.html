@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Thesis Entries </title>
+
+    <style type="text/css">
+
+        table
+        {border: 3px solid white;
+        }
+        body
+        {background-image: url('http://searchwallpaper.imagestocks.in/plog-content/images/images/wallpaper/pink-shades-hd-wallpaper-4828.jpg');
+        }
+        
+        div.sub
+        {background-color:white;
+
+        }
+        p.aaa
+        {color: white;
+
+        }
+
+        a.f a.g
+        {color:white;
+        }
+
+        td.a
+        {padding: 1em;
+         font-weight: bold;
+         color:#FF3399;
+        }
+
+        td.b
+        {padding: 1em;
+         font-weight: bold;
+         color: white;
+        }
+
+        a.c
+        {padding: 1em;
+         font-weight: bold;
+         color: #FF3399;
+        }
+
+        p.sss
+        {font-weight: bold;
+         color: white;
+         font-size: 40px;
+        }
+
+        div.zzz
+        {background-color: #E62E8A;
+        border-bottom-width:2px;  
+        border-color: white;
+        }
+    </style>
+
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+</head> 
+<body>
+
+    <div class="zzz navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>   
+            <p class="aaa navbar-brand"> Coe2043 Team 20</p>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li> <a href="/"> Home </a></li>
+                <li class="dropdown"> 
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Thesis<b class="caret"></b> </a> 
+                    <ul class="dropdown-menu">
+                        <li> <a href="/thesis/list"> Thesis View </a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<hr size="5">
+	<div align="center" class="header"><p class="sss">Thesis List</p></div>
+<hr size="5">
+    <table align="center" border="5">
+
+<tr>
+        <td class="a"> Thesis Title</td>
+        <td class="a"> School Year</td>
+        <td class="a"> Status </td>
+</tr>  
+        {% for t in all_thesis %}
+ 
+
+<tr>
+        <td class="b">{{t.thesis_title}}</td> 
+        <td class="b">{{t.thesis_year}}</td> 
+        <td class="b">{{t.stat}}</td>
+        <td><a  class="c" href="/thesis/view/{{t.key.id()}}"> Look up </a> </td>
+       
+        {% endfor %}
+</tr>
+    </table>
+<hr size="5">
+<div align="center" class="footer"><p class="sss">Coe2043-Team 20</p></div>
+<hr size="5">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
