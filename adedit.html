@@ -45,12 +45,20 @@
  	{margin-left: 650px;
  	}
 
+ 	li.sss
+      {margin-left: 650px;
+      }
+     h1.sra
+     {color: white;
+
+     }
 	</style>
 	<title> Adviser Update </title>
 	
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body>
+{% if user_name %}
 <br><br>
 <div class="zzz navbar navbar-fixed-top">
 	<div class="container">
@@ -70,8 +78,12 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" > Adviser<b class="caret"></b> </a>
 					<ul class="dropdown-menu">
 						<li> <a href="/adviser/list"> Adviser List </a></li>
+						<li> <a href="/adviser/new"> Adviser Registration </a></li>
 					</ul>
 				</li>
+				<li class="sss">
+           			 <a href="{{ url|safe }}">{{ url_linktext }}</a>
+        		</li> 
 			</ul>
 		</div>
 	</div>
@@ -83,7 +95,7 @@
 	<form method="POST" action="/adviser/edit/{{a.key.id()}}" class="form-horizontal">
 		
 		<hr size="5">
-		<div align="center" class="header"><h1 class="header">Adviser's List</h1></div>
+		<div align="center" class="header"><h1 class="header">Adviser's Update</h1></div>
 		<hr size="5">
 		<div class="form-group">
 			<label for="dept" class="ppp col-sm-2 control-label"> Department: </label>
@@ -151,6 +163,11 @@
 	</form>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% else %}
+		<div align="center" id="login">
+            <h1 class="sra"> Please <a href="{{ url|safe }}">{{ url_linktext }}</a> first. </h1> 
+        </div>	
+{% endif %}		
 </body>
 
 </html>
