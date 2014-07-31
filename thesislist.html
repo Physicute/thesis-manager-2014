@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% autoescape true %}
 <html>
 <head>
 	<title> Thesis Entries </title>
@@ -54,9 +55,14 @@
         border-bottom-width:2px;  
         border-color: white;
         }
+        li.sss
+      {margin-left: 650px;
+        color: white;
+      }
     </style>
 
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 </head> 
 <body>
 
@@ -79,7 +85,9 @@
                         <li> <a href="/thesis/list"> Thesis View </a></li>
                     </ul>
                 </li>
-
+                <li class="sss">
+                     <a href="{{ url|safe }}">{{ url_linktext }}</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -118,3 +126,4 @@
 
 </body>
 </html>
+{% endautoescape %}
