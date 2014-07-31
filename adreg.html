@@ -7,6 +7,9 @@
 	{background-image: url('http://www.pageresource.com/wallpapers/wallpaper/themebenzo-image-texture_131123.jpg');
  	}
 
+ 	li.sss
+      {margin-left: 650px;
+      }
  	div.header
     {padding:0em;
      border: 2px;
@@ -45,12 +48,20 @@
  	{margin-left: 650px;
  	}
 
+ 	h1.sra
+ 	{color: white;
+ 	}
+
+ 	li.sss
+      {margin-left: 650px;
+      }
 	</style>
 	<title> Adviser Registration </title>
 	
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body>
+{% if user_name %}
 <br><br>
 <div class="zzz navbar navbar-fixed-top">
 	<div class="container">
@@ -72,6 +83,9 @@
 						<li> <a href="/adviser/list"> Adviser List</a></li>
 					</ul>
 				</li>
+				<li class="sss">
+           			 <a href="{{ url|safe }}">{{ url_linktext }}</a>
+        		</li> 
 			</ul>
 		</div>
 	</div>
@@ -146,6 +160,12 @@
 	</form>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% else %}
+		<div align="center" id="login">
+            <h1 class="sra"> Please <a href="{{ url|safe }}">{{ url_linktext }}</a> first. </h1> 
+        </div>	
+{% endif %}
+
 </body>
 
 </html>
