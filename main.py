@@ -44,6 +44,7 @@ class MainPage(webapp2.RequestHandler):
             'guestbook_name': urllib.quote_plus(guestbook_name),
             'url': url,
             'url_linktext': url_linktext,
+            'user_name': users.get_current_user()
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -78,9 +79,19 @@ class StudentSuccessPageHandler(webapp2.RequestHandler):
 
 class StudentIdHandler(webapp2.RequestHandler):
     def get(self, students_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         students = Student.query().fetch()
         students_id = int(students_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': students_id,
             'all_students': students
         }
@@ -89,8 +100,18 @@ class StudentIdHandler(webapp2.RequestHandler):
 
 class StudentListHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         students = Student.query().fetch()
         template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             "all_students": students
         }
         template = JINJA_ENVIRONMENT.get_template('stulist.html')
@@ -98,8 +119,20 @@ class StudentListHandler(webapp2.RequestHandler):
 
 class StudentNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user()
+        }
         template = JINJA_ENVIRONMENT.get_template('stureg.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
 
     def post(self):
         students = Student()
@@ -112,9 +145,19 @@ class StudentNewHandler(webapp2.RequestHandler):
 
 class StudentEditHandler(webapp2.RequestHandler):
     def get(self, students_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         students = Student.query().fetch()
         students_id = int(students_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': students_id,
             'all_students': students
         }
@@ -144,9 +187,19 @@ class ThesisSuccessPageHandler(webapp2.RequestHandler):
 
 class ThesisIdHandler(webapp2.RequestHandler):
     def get(self, thesis_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         thesis = Thesis.query().fetch()
         thesis_id = int(thesis_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': thesis_id,
             'all_thesis': thesis
         }
@@ -155,17 +208,39 @@ class ThesisIdHandler(webapp2.RequestHandler):
 
 class ThesisListHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         thesis = Thesis.query().fetch()
         template_values = {
-            "all_thesis": thesis
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
+            "all_thesis": thesis    
         }
         template = JINJA_ENVIRONMENT.get_template('thesislist.html')
         self.response.write(template.render(template_values))
 
 class ThesisNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user()
+        }
         template = JINJA_ENVIRONMENT.get_template('thesisreg.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
 
     def post(self):
         thesis = Thesis()
@@ -178,9 +253,19 @@ class ThesisNewHandler(webapp2.RequestHandler):
 
 class ThesisEditHandler(webapp2.RequestHandler):
     def get(self, thesis_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         thesis = Thesis.query().fetch()
         thesis_id = int(thesis_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': thesis_id,
             'all_thesis': thesis
         }
@@ -212,9 +297,19 @@ class AdSuccessPageHandler(webapp2.RequestHandler):
 
 class AdIdHandler(webapp2.RequestHandler):
     def get(self, ad_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         advise = Adviser.query().fetch()
         advise_id = int(ad_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': advise_id,
             'all_advise': advise
         }
@@ -223,8 +318,18 @@ class AdIdHandler(webapp2.RequestHandler):
 
 class AdListHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         advise = Adviser.query().fetch()
         template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             "all_advise": advise
         }
         template = JINJA_ENVIRONMENT.get_template('adlist.html')
@@ -232,8 +337,20 @@ class AdListHandler(webapp2.RequestHandler):
 
 class AdNewHandler(webapp2.RequestHandler):
     def get(self):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user()
+        }
         template = JINJA_ENVIRONMENT.get_template('adreg.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
 
     def post(self):
         advise = Adviser()
@@ -248,9 +365,19 @@ class AdNewHandler(webapp2.RequestHandler):
 
 class AdEditHandler(webapp2.RequestHandler):
     def get(self, advise_id):
+        if users.get_current_user():
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         advise = Adviser.query().fetch()
         advise_id = int(advise_id)
         template_values={
+            'url': url,
+            'url_linktext': url_linktext,
+            'user_name': users.get_current_user(),
             'id': advise_id,
             'all_advise': advise
         }
