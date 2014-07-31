@@ -12,6 +12,9 @@
  	{color: black;
  	}
 
+ 	li.sss
+      {margin-left: 650px;
+      }
  	p.sss
  	{color: black;
  	 font-size: 40px;
@@ -39,7 +42,7 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body >
-
+{% if user_name %}
 <div class="zzz navbar navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -58,14 +61,18 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" > Student <b class="caret"></b> </a>
 					<ul class="dropdown-menu">
 						<li> <a href="/student/list"> Student List </a></li>
+						<li> <a href="/student/new"> Student Registration </a></li>
 					</ul>
 				</li>
+				<li class="sss">
+           			 <a href="{{ url|safe }}">{{ url_linktext }}</a>
+        		</li> 
 			</ul>
 		</div>
 	</div>
 </div>
 <br><br><br>
-<p class="sss">Student Details<p> 
+<p class="sss">Student Update<p> 
 <br>
 	{% for s in all_students %}
 	{% if  s.key.id()==id  %}
@@ -111,5 +118,11 @@
 	</form>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+{% else %}
+		<div align="center" id="login">
+            <h1> Please <a href="{{ url|safe }}">{{ url_linktext }}</a> first. </h1> 
+        </div>	
+{% endif %}
 </body>
 </html>
