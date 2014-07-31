@@ -49,11 +49,18 @@
     div.solo
     {margin-left: 650px;
     }
+    h1.sra
+    {color: white;
+
+    }
+    li.sss
+      {margin-left: 650px;
+      }
 		</style>
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head> 
 <body>
-
+{% if user_name %}
   <div class="zzz navbar navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -74,7 +81,9 @@
             <li> <a href="/adviser/list"> Adviser List </a></li>
           </ul>
         </li>
-
+        <li class="sss">
+           <a href="{{ url|safe }}">{{ url_linktext }}</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -116,7 +125,12 @@
       {% endfor %}
 
 <hr>
- <div align="center" class="header"><h1 class="header">Coe2043-Team 20</h1></div>
-<hr>
+
+
+{% else %}
+    <div align="center" id="login">
+            <h1 class="sra"> Please <a href="{{ url|safe }}">{{ url_linktext }}</a> first. </h1> 
+        </div>  
+{% endif %}
 </body>
 </html>
