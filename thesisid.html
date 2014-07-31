@@ -25,7 +25,10 @@
 		 font-size: 20px;
 		 color:#E62E8A;
 		}
+		h1.sra
+		{color: white;
 
+		}
 		p.b
 		{color: white;
 		 font-weight: bold;
@@ -42,12 +45,15 @@
  		div.solo
  		{margin-left: 650px;
  		}
+ 		li.sss
+      {margin-left: 650px;
+      }	
 	</style>
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head> 
 <body>
-
+{% if user_name %}
 	<div class="zzz navbar navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -68,7 +74,9 @@
 						<li> <a href="/thesis/list"> Thesis List </a></li>
 					</ul>
 				</li>
-
+				<li class="sss">
+            	<a href="{{ url|safe }}">{{ url_linktext }}</a>
+        		</li> 
 			</ul>
 		</div>
 	</div>
@@ -100,12 +108,14 @@
 	</div>
   	  {% endif %}
       {% endfor %}
-<div align="center">      
-<hr size="5">
-    <div align="center"><h1 class="aaa">Coe2043-Team 20</h1></div>
 <hr size="5">
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+{% else %}
+    <div align="center" id="login">
+            <h1 class="sra"> Please <a href="{{ url|safe }}">{{ url_linktext }}</a> first. </h1> 
+        </div>  
+{% endif %}
 </body>
 </html>
